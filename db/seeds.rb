@@ -30,3 +30,9 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+Book.create!(title: "Drach",
+            synopsis: "Tako rzecze Drach",
+            date_of_print: Time.zone.now,
+            amount: 0,
+            author: "Szczepan Twardoch")

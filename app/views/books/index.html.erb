@@ -1,0 +1,12 @@
+<% provide(:title, 'All books') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <% @books.each do |book| %>
+    <%= render book %>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

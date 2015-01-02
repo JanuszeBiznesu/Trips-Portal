@@ -31,4 +31,11 @@ class BookTest < ActiveSupport::TestCase
     assert_not @book.valid?
   end
 
+  test "amount should be above or equal 0" do
+    @book.amount = 0
+    assert @book.valid?
+    @book.amount = -3
+    assert_not @book.valid?
+  end
+
 end
