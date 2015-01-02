@@ -18,7 +18,9 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :following, through: :active_relationships, source: :followed
-
+  has_many :borrower_relationships, class_name:  "Possession",
+                                    foreign_key: "borrower_id",
+                                    dependent:   :destroy
 
   # Follows a user.
   def follow(other_user)

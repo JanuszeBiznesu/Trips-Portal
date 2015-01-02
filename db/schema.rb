@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102061309) do
+ActiveRecord::Schema.define(version: 20150102162440) do
 
   create_table "books", force: true do |t|
     t.integer  "book_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150102061309) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "amount"
+    t.string   "picture"
   end
 
   create_table "microposts", force: true do |t|
@@ -29,10 +30,22 @@ ActiveRecord::Schema.define(version: 20150102061309) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "picture"
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "possessions", force: true do |t|
+    t.integer  "borrower_id"
+    t.integer  "borrowed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "possessions", ["borrowed_id"], name: "index_possessions_on_borrowed_id"
+  add_index "possessions", ["borrower_id", "borrowed_id"], name: "index_possessions_on_borrower_id_and_borrowed_id", unique: true
+  add_index "possessions", ["borrower_id"], name: "index_possessions_on_borrower_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
