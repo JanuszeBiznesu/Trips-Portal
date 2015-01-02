@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101152904) do
+ActiveRecord::Schema.define(version: 20150102061309) do
+
+  create_table "books", force: true do |t|
+    t.integer  "book_id"
+    t.string   "title"
+    t.string   "author"
+    t.datetime "date_of_print"
+    t.string   "synopsis"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "amount"
+  end
 
   create_table "microposts", force: true do |t|
     t.text     "content"
