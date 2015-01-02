@@ -4,6 +4,7 @@ class UsersControllerTest < ActionController::TestCase
   
   def setup
     @user = users(:michael)
+    @user_not_admin = users(:lana)
   end
   
   test "should get new" do
@@ -36,4 +37,11 @@ class UsersControllerTest < ActionController::TestCase
     get :followers, id: @user
     assert_redirected_to login_url
   end
+
+  test "should redirect index when not admin" do
+    log_in_as(@user_not_admin)
+    get :index
+    assert_redirected_to root_url
+  end
+
 end
