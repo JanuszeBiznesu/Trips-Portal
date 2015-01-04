@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102162440) do
+ActiveRecord::Schema.define(version: 20150104160940) do
 
   create_table "books", force: true do |t|
     t.integer  "book_id"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20150102162440) do
     t.datetime "updated_at",    null: false
     t.integer  "amount"
     t.string   "picture"
+  end
+
+  create_table "copies", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "copy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "microposts", force: true do |t|

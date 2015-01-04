@@ -47,3 +47,5 @@ Book.create!(title: "Drach",
               amount: 1,
               author: author)
 end
+
+Copy.create!(copy_id: 1, book_id: 1)
