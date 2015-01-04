@@ -12,17 +12,19 @@
       <%= f.label :author %>
       <%= f.text_field :author, class: 'form-control' %>
 
+      <%= f.label :synopsis %>
+      <%= f.text_area :synopsis, class: 'form-control' %>
+
       <%= f.label :amount %>
       <%= f.number_field :amount, class: 'form-control' %>
+
+      <%= f.label :picture %>
       <span class="picture">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
       </span>
-      <%= select_year @book.date_of_print, { :prompt => "Year", 
-                                                  :start_year => Time.zone.now.year, 
-                                                  :end_year => Time.zone.now.year - 150, 
-                                                  :field_name => :date_of_print, 
-                                                  :prefix => :book }, 
-                                                  class:"form-control" %>
+
+      <%= f.label :year_of_print %>
+      <%= f.date_select :year_of_print, :order => [:year], :start_year => Time.zone.now.year - 150, :end_year => Time.zone.now.year %>
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
 

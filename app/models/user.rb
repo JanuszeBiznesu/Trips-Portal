@@ -18,9 +18,11 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :following, through: :active_relationships, source: :followed
+
   has_many :borrower_relationships, class_name:  "Possession",
                                     foreign_key: "borrower_id",
                                     dependent:   :destroy
+  has_many :borrowed_books, through: :borrower_relationships, source: :borrowed
 
   # Follows a user.
   def follow(other_user)
@@ -30,6 +32,14 @@ class User < ActiveRecord::Base
   # Unfollows a user.
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def borrow(book)
+    borrower_relationships.create(borrowed_id: book.id)
+  end
+
+  def unborrow(user, book)
+    borrower_relationships.find_by(borrowed_id: book.id).destroy
   end
 
   # Returns true if the current user is following the other user.

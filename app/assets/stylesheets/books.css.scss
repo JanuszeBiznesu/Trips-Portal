@@ -1,3 +1,60 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.books {
+	text-align: center;
+	table-layout: fixed;
+	color: black;
+}
+
+.books td 
+{
+	width:15%;
+}
+
+.books th 
+{
+	width:20%;
+}
+
+
+.books img {
+	width:80px;
+	float: left;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.synopsis {
+	padding-top: 20px;
+	margin-left: 10px;
+	border: solid 2px;
+}
+
+a:hover, a:visited, a:active, a:link {
+	color: black;
+}
+
+
+.show_book {
+	margin-top:50px;
+	border: 2px solid;
+	border-radius: 30px;
+	text-align: center;
+	margin-bottom:50px;
+}
+
+.show_book td {
+	border: solid 2px;
+}
+
+.synopsis_text {
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+h1 {
+	font-size: 125%;
+}
+

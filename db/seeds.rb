@@ -33,7 +33,7 @@ followers.each { |follower| follower.follow(user) }
 
 Book.create!(title: "Drach",
             synopsis: "Tako rzecze Drach",
-            date_of_print: Time.zone.now,
+            year_of_print: Time.zone.now,
             amount: 1,
             author: "Szczepan Twardoch")
 
@@ -43,7 +43,7 @@ Book.create!(title: "Drach",
   title = "Leonard part #{n+1}"
   Book.create!(title: title,
               synopsis: "Yet another part of Leonard adventures",
-              date_of_print: Time.zone.now,
+              year_of_print: Time.zone.now,
               amount: 1,
               author: author)
 end

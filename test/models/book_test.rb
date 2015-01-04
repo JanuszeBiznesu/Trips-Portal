@@ -16,7 +16,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test "date of print should be present" do
-    @book.date_of_print = "     "
+    @book.year_of_print = "     "
     assert_not @book.valid?
   end
 

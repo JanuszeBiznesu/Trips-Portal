@@ -4,7 +4,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :book_id
       t.string :title
       t.string :author
-      t.datetime :date_of_print
+      t.date :year_of_print
       t.string :synopsis
 
       t.timestamps null: false

@@ -1,17 +1,14 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section>
-      <h1>
-        <%= book.title %>
-      </h1>
-      <p>
-        <%= book.author %>
-      </p>
-      <p>
-        <%= book.date_of_print.year %>
-      </p>
-      <p>
-        <%= book.synopsis %>
-      </p>
-    </section>
-</div>
+<div class="row ">
+  <%= link_to book do %>
+    <aside class="col-md-4">
+      <%= image_tag book.picture.url if book.picture? %>
+      <%= image_tag "temp.jpg" if !book.picture? %>
+      <section class="synopsis">
+        <span class="content">
+          <p> <strong> Title: </strong> <%= book.title %> </p>
+          <p> <strong> Author: </strong> <%= book.author %></p> 
+          <p> <strong> Year of print: </strong> <%= book.year_of_print.year %> </p>
+      </section>
+      </aside>
+  </div>
+<% end %>

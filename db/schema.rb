@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104092315) do
+ActiveRecord::Schema.define(version: 20150102162440) do
 
   create_table "books", force: true do |t|
     t.integer  "book_id"
     t.string   "title"
     t.string   "author"
-    t.datetime "date_of_print"
+    t.date     "year_of_print"
     t.string   "synopsis"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 20150104092315) do
   create_table "possessions", force: true do |t|
     t.integer  "borrower_id"
     t.integer  "borrowed_id"
+    t.string   "specifier",   default: "active"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "specifier",   default: "active"
   end
 
   add_index "possessions", ["borrowed_id"], name: "index_possessions_on_borrowed_id"
-  add_index "possessions", ["borrower_id", "borrowed_id"], name: "index_possessions_on_borrower_id_and_borrowed_id", unique: true
+  add_index "possessions", ["borrower_id", "borrowed_id", "specifier"], name: "index_possessions_on_borrower_id_and_borrowed_id_and_specifier", unique: true
   add_index "possessions", ["borrower_id"], name: "index_possessions_on_borrower_id"
 
   create_table "relationships", force: true do |t|
