@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102162440) do
+ActiveRecord::Schema.define(version: 20150104092315) do
 
   create_table "books", force: true do |t|
     t.integer  "book_id"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(version: 20150102162440) do
   create_table "possessions", force: true do |t|
     t.integer  "borrower_id"
     t.integer  "borrowed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "specifier",   default: "active"
   end
 
   add_index "possessions", ["borrowed_id"], name: "index_possessions_on_borrowed_id"
