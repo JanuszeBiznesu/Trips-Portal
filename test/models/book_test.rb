@@ -15,12 +15,6 @@ class BookTest < ActiveSupport::TestCase
     assert_not @book.valid?
   end
 
-  test "date of print should be present" do
-    @book.year_of_print = "     "
-    assert_not @book.valid?
-  end
-
-
   test "author should be present" do
     @book.author = "     "
     assert_not @book.valid?

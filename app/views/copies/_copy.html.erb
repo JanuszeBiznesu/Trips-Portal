@@ -1,0 +1,16 @@
+<tr>
+          <td> <%= copy.ISBN %> </td>
+          <td> <%= copy.edition %></td> 
+          <td> <%= copy.year_of_print %></td> 
+          <td>
+            <%= link_to edit_copy_path(copy) do %>
+              <input type="button" value="Edit" class="btn btn-primary"/>
+            <% end %>
+            <% if current_user.admin? %>
+              <%= link_to copy_path(copy), :method => :delete do %>
+                <input type="button" value="Delete" class="btn btn-primary"/>
+              <% end %>
+            <% end %>
+          </td>
+
+</tr>

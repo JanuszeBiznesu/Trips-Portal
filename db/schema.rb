@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104160940) do
+ActiveRecord::Schema.define(version: 20150106101113) do
 
   create_table "books", force: true do |t|
-    t.integer  "book_id"
     t.string   "title"
     t.string   "author"
-    t.date     "year_of_print"
     t.string   "synopsis"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "amount"
     t.string   "picture"
   end
 
   create_table "copies", force: true do |t|
     t.integer  "book_id"
-    t.integer  "copy_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "ISBN"
+    t.integer  "edition"
+    t.integer  "year_of_print"
   end
 
   create_table "microposts", force: true do |t|
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20150104160940) do
   create_table "possessions", force: true do |t|
     t.integer  "borrower_id"
     t.integer  "borrowed_id"
-    t.string   "specifier",   default: "active"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "specifier",   default: "pending"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "possessions", ["borrowed_id"], name: "index_possessions_on_borrowed_id"

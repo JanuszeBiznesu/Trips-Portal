@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   has_many :borrower_relationships, class_name:  "Possession",
                                     foreign_key: "borrower_id",
                                     dependent:   :destroy
-  has_many :borrowed_books, through: :borrower_relationships, source: :borrowed
+  has_many :borrowed_copies, through: :borrower_relationships, source: :borrowed
 
   # Follows a user.
   def follow(other_user)
@@ -34,12 +34,16 @@ class User < ActiveRecord::Base
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def borrow(book)
-    borrower_relationships.create(borrowed_id: book.id)
+  def place_order(copy)
+    borrower_relationships.create(borrowed_id: copy.id)
   end
 
-  def unborrow(user, book)
-    borrower_relationships.find_by(borrowed_id: book.id).destroy
+  def displace_order(copy)
+    borrower_relationships.find_by(borrowed_id: copy.id).destroy
+  end
+
+  def borrow?(copy)
+    borrowed_books.include?(copy)
   end
 
   # Returns true if the current user is following the other user.

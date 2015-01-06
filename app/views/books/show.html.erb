@@ -1,6 +1,7 @@
 <% provide(:title, @book.title) %>
-<div >
-<table class="show_book">
+
+<div class="show_book">
+<table class="show_book_table">
     <tr>
       <td> Cover: </td>
       <td>
@@ -14,13 +15,30 @@
     <tr>
       <td> <strong> Author: </strong> </td> <td>  <%= @book.author %> </td>
     </tr>
-    <tr>
-      <td> <strong> Year of print: </strong> </td> <td>  <%= @book.year_of_print.year %> </td>
-    </tr>
 
 </table>
+<%= link_to edit_book_path(@book) do %>
+  <input type="button" value="Edit" class="btn btn-primary"/>
+<% end %>
 <h1> <strong> Synopsis: </strong> </h1>
 <div class="synopsis_text">
   <%= @book.synopsis %> 
+</div>
+
+<h1> <strong> Copies: </strong> </h1>
+<table class="center">
+<tr>
+<th> ISBN </th>
+<th> Edition </th>
+<th> Year of print </th>
+</tr>
+  <% @copies.each do |copy| %>
+    <%= render copy %>
+  <% end %>
+</table>
+<div style="{margin-left:auto; margin-right:auto;}">
+<%= link_to new_copy_path(id: @book.id) do %>
+  <input type="button"  value="New" class="btn btn-primary"/>
+<% end %>
 </div>
 </div>

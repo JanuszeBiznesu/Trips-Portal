@@ -2,5 +2,7 @@
 
 One:
   book_id: 1
-  copy_id: 1
+  year_of_print: 2015-01-02
+  edition: 1
+  ISBN: "temp"
 

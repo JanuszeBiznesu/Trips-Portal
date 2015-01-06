@@ -1,5 +1,5 @@
-<% provide(:title, "Add a book") %>
-<h1>Update your profile</h1>
+<% provide(:title, "Edit a book") %>
+<h1>Update book info</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -19,6 +19,7 @@
       <span class="picture">
         <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
       </span>
+
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>

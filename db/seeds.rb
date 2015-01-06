@@ -33,7 +33,6 @@ followers.each { |follower| follower.follow(user) }
 
 Book.create!(title: "Drach",
             synopsis: "Tako rzecze Drach",
-            year_of_print: Time.zone.now,
             amount: 1,
             author: "Szczepan Twardoch")
 
@@ -43,9 +42,9 @@ Book.create!(title: "Drach",
   title = "Leonard part #{n+1}"
   Book.create!(title: title,
               synopsis: "Yet another part of Leonard adventures",
-              year_of_print: Time.zone.now,
               amount: 1,
               author: author)
 end
 
-Copy.create!(copy_id: 1, book_id: 1)
+Copy.create!(book_id: 1, edition: 1, ISBN: "temp", year_of_print: Time.zone.now.year)
+Copy.create!(book_id: 1, edition: 1, ISBN: "temp", year_of_print: Time.zone.now.year)

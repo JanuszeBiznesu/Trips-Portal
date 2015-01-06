@@ -39,10 +39,12 @@ a:hover, a:visited, a:active, a:link {
 
 .show_book {
 	margin-top:50px;
+}
+
+.show_book_table {
+	text-align: center;
 	border: 2px solid;
 	border-radius: 30px;
-	text-align: center;
-	margin-bottom:50px;
 }
 
 .show_book td {
@@ -54,7 +56,23 @@ a:hover, a:visited, a:active, a:link {
 	margin-top: 20px;
 }
 
+.show_book input {
+	width: 50px;	
+}
+
 h1 {
 	font-size: 125%;
 }
+
+table.center {
+	margin-left:auto;
+	margin-right:auto;
+	width: 50%;
+}
+
+table.center th,td{
+	text-align: center;
+	border: 2px solid;
+}
+
 

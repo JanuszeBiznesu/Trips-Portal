@@ -68,11 +68,26 @@ GEM
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    elasticsearch (1.0.6)
+      elasticsearch-api (= 1.0.6)
+      elasticsearch-transport (= 1.0.6)
+    elasticsearch-api (1.0.6)
+      multi_json
+    elasticsearch-model (0.1.6)
+      activesupport (> 3)
+      elasticsearch (> 0.4)
+      hashie
+    elasticsearch-rails (0.1.6)
+    elasticsearch-transport (1.0.6)
+      faraday
+      multi_json
     erubis (2.7.0)
     excon (0.42.1)
     execjs (2.2.2)
     faker (1.4.2)
       i18n (~> 0.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.6)
     fog (1.23.0)
       fog-brightbox
@@ -110,6 +125,7 @@ GEM
     guard-minitest (2.3.1)
       guard (~> 2.0)
       minitest (>= 3.0)
+    hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0)
@@ -148,6 +164,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     nenv (0.1.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -254,6 +271,8 @@ DEPENDENCIES
   byebug (= 3.4.0)
   carrierwave (= 0.10.0)
   coffee-rails (= 4.1.0)
+  elasticsearch-model
+  elasticsearch-rails
   faker (= 1.4.2)
   fog (= 1.23.0)
   guard-minitest (= 2.3.1)
