@@ -26,6 +26,9 @@
 </div>
 
 <h1> <strong> Copies: </strong> </h1>
+<%= link_to new_copy_path(id: @book.id) do %>
+  <input type="button"  value="New" class="btn btn-primary"/>
+<% end %>
 <table class="center">
 <tr>
 <th> ISBN </th>
@@ -37,8 +40,5 @@
   <% end %>
 </table>
 <div style="{margin-left:auto; margin-right:auto;}">
-<%= link_to new_copy_path(id: @book.id) do %>
-  <input type="button"  value="New" class="btn btn-primary"/>
-<% end %>
 </div>
 </div>

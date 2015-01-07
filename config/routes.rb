@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
+  get    'borrow'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
@@ -20,7 +21,9 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+  resources :possessions,       only: [:create, :destroy]
   resources :books
   resources :copies
+  get 'search', to: 'search#search'
 
 end

@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   end
 
   def borrow?(copy)
-    borrowed_books.include?(copy)
+    borrowed_copies.include?(copy)
   end
 
   # Returns true if the current user is following the other user.

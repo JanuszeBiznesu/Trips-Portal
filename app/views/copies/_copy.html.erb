@@ -3,13 +3,21 @@
           <td> <%= copy.edition %></td> 
           <td> <%= copy.year_of_print %></td> 
           <td>
-            <%= link_to edit_copy_path(copy) do %>
-              <input type="button" value="Edit" class="btn btn-primary"/>
-            <% end %>
-            <% if current_user.admin? %>
-              <%= link_to copy_path(copy), :method => :delete do %>
-                <input type="button" value="Delete" class="btn btn-primary"/>
+            <% if logged_in? %>
+              <% if current_user.admin? %>
+                <%= link_to edit_copy_path(copy) do %>
+                  <input type="button" value="Edit" class="btn btn-primary"/>
+                <% end %>
+                <%= link_to copy_path(copy), :method => :delete do %>
+                  <input type="button" value="Delete" class="btn btn-primary"/>
+                <% end %>
               <% end %>
+              <% if not current_user.borrow?(copy) %>
+                <%= form_for(current_user.borrower_relationships.build) do |f| %>
+                    <div><%= hidden_field_tag :borrowed_id, copy.id %></div>
+                  <%= f.submit "Borrow", class: "btn btn-primary" %>
+                <% end %>        
+              <% end %>   
             <% end %>
           </td>
 

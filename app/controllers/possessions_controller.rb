@@ -1,24 +1,24 @@
 class PossessionsController < ApplicationController
-	before_action :logged_in_user, only [:create_order, destroy_order]
-  	before_action :admin_user,     only: [:activate_order, destroy_active_order]
+	before_action :logged_in_user, only: [:create, :destroy]
 
-	def create_order
-		copy = Copy.find(params[:id])
-    	current_user.borrow(copy)
-    	redirect_to book
-	end
+ 	def create
+    	user = Copy.find(params[:borrowed_id])
+    	current_user.place_order(user)
+    	redirect_to current_user
+  	end
 
-	def destroy_order
-		copy = Copy.find(params[:id])
-    	current_user.unborrow(copy)
-    	redirect_to book
-	end
+  	def destroy
 
-	def activate_order(order)
-		Possessions.find(order).update_attribute(:specified, "active")
-	end
+ 	end
 
-	def destroy_active_order(user, order)
-		user.destroy_order(user)
-	end
+  private
+
+	    def logged_in_user
+	      unless logged_in?
+	        store_location
+	        flash[:danger] = "Please log in."
+	        redirect_to login_url
+	      end
+	    end
+
 end

@@ -1,8 +1,8 @@
 <div class="row ">
-  <%= link_to book do %>
+  <%= link_to book_path(book.id) do %>
     <aside class="col-md-4">
-      <%= image_tag book.picture.url if book.picture? %>
-      <%= image_tag "temp.jpg" if !book.picture? %>
+      <%= image_tag Book.find(book.id).picture.url if Book.find(book.id).picture? %>
+      <%= image_tag "temp.jpg" if !Book.find(book.id).picture? %>
       <section class="synopsis">
         <span class="content">
           <p> <strong> Title: </strong> <%= book.title %> </p>

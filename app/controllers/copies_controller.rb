@@ -1,5 +1,8 @@
 class CopiesController < ApplicationController
 
+
+	before_action :admin_user,     only: [:destroy]
+	
 	def edit
     	@copy = Copy.find(params[:id])
     	@book = Book.find(@copy.book_id)
