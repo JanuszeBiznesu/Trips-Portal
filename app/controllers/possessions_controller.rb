@@ -30,17 +30,6 @@ class PossessionsController < ApplicationController
  	end
 
 
-	def update
-		@possession = Possession.find(params[:id])
-		@book = Book.find(Copy.find(@possession.borrowed_id).book_id)
-		if @possession.update_attributes(book_params)
-	 	 	flash[:success] = "Book updated"
-		else
-			flash[:success] = "Book did not update correctly"
-		end
-		redirect_to @book
-	end
-
   private
 
 	    def logged_in_user

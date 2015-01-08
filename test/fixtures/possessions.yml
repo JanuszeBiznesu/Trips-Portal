@@ -2,3 +2,4 @@
 one:
   borrower_id: 1
   borrowed_id: 1
+  id: 1
