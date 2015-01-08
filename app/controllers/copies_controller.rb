@@ -1,7 +1,7 @@
 class CopiesController < ApplicationController
 
 
-	before_action :admin_user,     only: [:destroy]
+	before_action :admin_user
 	
 	def edit
     	@copy = Copy.find(params[:id])
@@ -41,6 +41,10 @@ class CopiesController < ApplicationController
 	  		redirect_to action: 'edit', id: params[:id]
 		end
 	end
+
+	def admin_user
+    	redirect_to(books_url) unless logged_in? && current_user.admin?
+  	end
 
 	private
 
