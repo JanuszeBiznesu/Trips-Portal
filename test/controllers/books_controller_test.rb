@@ -9,8 +9,8 @@ class BooksControllerTest < ActionController::TestCase
   end
 
   test "shouldn't get new when not logged in" do
-    get :new, id: 1
-    assert_redirected_to books_path+"/1"
+    get :new
+    assert_redirected_to books_path
   end
 
   test "shouldn't get edit when not logged in" do
@@ -25,7 +25,7 @@ class BooksControllerTest < ActionController::TestCase
 
   test "should get new when admin" do
   	log_in_as(@user)
-    get :new, id: 1
+    get :new
     assert_response :success
   end
 
@@ -43,8 +43,8 @@ class BooksControllerTest < ActionController::TestCase
 
   test "should get new when not admin" do
   	log_in_as(@not_admin_user)
-    get :new, id: 1
-    assert_redirected_to books_path+"/1"
+    get :new
+    assert_redirected_to books_path
   end
 
   test "should get edit when not admin" do

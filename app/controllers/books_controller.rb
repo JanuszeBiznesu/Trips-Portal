@@ -40,7 +40,13 @@ class BooksController < ApplicationController
   	end
 
    	def admin_user
-    	redirect_to book_path(Book.find(params[:id])) unless logged_in? && current_user.admin?
+   		if not logged_in? && current_user.admin?
+	   		if params[:id]
+	    		redirect_to book_path(Book.find(params[:id])) 
+	    	else
+	    		redirect_to books_path unless logged_in? && current_user.admin?
+	    	end
+	    end
   	end
 
 	private
