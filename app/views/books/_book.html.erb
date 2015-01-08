@@ -1,4 +1,4 @@
-<div class="row ">
+<div class="marginally">
   <%= link_to book_path(book.id) do %>
     <aside class="col-md-4">
       <%= image_tag Book.find(book.id).picture.url if Book.find(book.id).picture? %>

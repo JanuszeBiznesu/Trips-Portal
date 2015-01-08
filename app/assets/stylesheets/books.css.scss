@@ -47,9 +47,6 @@ a:hover, a:visited, a:active, a:link {
 	border-radius: 30px;
 }
 
-.show_book td {
-	border: solid 2px;
-}
 
 .synopsis_text {
 	margin-left: 20px;
@@ -70,11 +67,35 @@ table.center {
 	width: 70%;
 }
 
-table.center th,td{
+.data{
 	text-align: center;
-	border: 2px solid;
+	border: solid 2px;
 }
 
-.row {
+.marginally {
 	margin-top: 20px;
+}
+
+div.pagination {
+	width: 100%;
+}
+
+
+.action {
+	border: 0px;
+	float: left;
+	width: 50%;
+}
+
+.new_possession {
+	display: inline;
+	float: left;
+	margin-right:10px;
+}
+
+.edit_possession {
+	display: inline;
+	float: left;
+	margin-right:10px;
+	font: 2px;
 }

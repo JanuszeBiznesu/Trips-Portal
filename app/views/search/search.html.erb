@@ -10,12 +10,12 @@
 <% if @books != [] %>
   <%= will_paginate  @books %>
 
-  <ul class="books">
+  <div class="books">
     <% @books.each do |book| %>
       <%= render :partial => 'books/book', :locals => {:book => book._source} %>
     <% end %>
-  </ul>
   <%= will_paginate  @books %>
+
 <% end %>
 
 

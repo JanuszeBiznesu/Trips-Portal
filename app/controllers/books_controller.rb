@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  	before_action :admin_user,     only: [:destroy]
+  	before_action :admin_user,     only: [:new, :update, :edit]
 
  	def new
  		@book = Book.new
@@ -18,7 +18,7 @@ class BooksController < ApplicationController
 	def show
 		@book = Book.find(params[:id])
 		@user = User.find(current_user.id) if logged_in?
-		@copies = Copy.where(book_id: params[:id]).paginate(page: params[:page], :per_page => 10)
+		@copies = Copy.where(book_id: params[:id]).paginate(page: params[:page], :per_page => 30)
 	end
 
 	def update
@@ -32,11 +32,15 @@ class BooksController < ApplicationController
 	end
 
 	def index
-		@books = Book.paginate(page: params[:page], :per_page => 10)
+		@books = Book.paginate(page: params[:page], :per_page => 15)
 	end
 
 	def edit
     	@book = Book.find(params[:id])
+  	end
+
+   	def admin_user
+    	redirect_to book_path(Book.find(params[:id])) unless logged_in? && current_user.admin?
   	end
 
 	private

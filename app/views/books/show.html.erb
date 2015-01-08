@@ -10,10 +10,10 @@
       </td>
     </tr>
     <tr>
-      <td> <strong> Title: </strong> </td> <td> <%= @book.title %> </td>
+      <td  class="data"> <strong> Title: </strong> </td> <td  class="data"> <%= @book.title %> </td>
     </tr>
     <tr>
-      <td> <strong> Author: </strong> </td> <td>  <%= @book.author %> </td>
+      <td  class="data"> <strong> Author: </strong> </td> <td  class="data">  <%= @book.author %> </td>
     </tr>
 
 </table>
@@ -31,9 +31,11 @@
 <% end %>
 <table class="center">
 <tr>
-<th> ISBN </th>
-<th> Edition </th>
-<th> Year of print </th>
+<th class="data"> ISBN </th>
+<th class="data"> Edition </th>
+<th class="data"> Year of print </th>
+<th class="data"> Number of orders </th>
+<th class="data"> Availability </th>
 </tr>
   <% @copies.each do |copy| %>
     <%= render copy %>
