@@ -15,6 +15,11 @@ class BookTest < ActiveSupport::TestCase
     assert_not @book.valid?
   end
 
+  test "genre id should be present" do
+    @book.genre_id = "     "
+    assert_not @book.valid?
+  end
+
   test "author should be present" do
     @book.author = "     "
     assert_not @book.valid?

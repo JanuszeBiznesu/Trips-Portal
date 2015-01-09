@@ -24,6 +24,10 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
+
+Genre.create!(name: "Drama")
+Genre.create!(name: "Biography")
+
 users = User.all
 user  = users.first
 following = users[2..50]
@@ -34,6 +38,7 @@ followers.each { |follower| follower.follow(user) }
 Book.create!(title: "Drach",
             synopsis: "Tako rzecze Drach",
             amount: 1,
+            genre_id: 1,
             author: "Szczepan Twardoch")
 
 
@@ -43,6 +48,7 @@ Book.create!(title: "Drach",
   Book.create!(title: title,
               synopsis: "Yet another part of Leonard adventures",
               amount: 1,
+              genre_id: 2,
               author: author)
 end
 
