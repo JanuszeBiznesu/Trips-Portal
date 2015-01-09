@@ -27,4 +27,12 @@ module PossessionsHelper
  		end
  	end
 
+ 	def can_unorder?(user, copy)
+ 		Possession.where(borrowed_id: copy.id, borrower_id: current_user.id).first.specifier != "active"
+ 	end
+
+ 	def estimated_return_time_of(copy)
+ 		Possession.where(borrowed_id: copy.id).first.created_at + 1.month
+ 	end
+
 end

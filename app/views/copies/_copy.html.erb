@@ -10,7 +10,7 @@
           <td class="data">
           <% if Possession.where(borrowed_id: copy.id).length != 0 %>
             <% if Possession.where(borrowed_id: copy.id).first.specifier == "active" %>
-             <span> Till <%= Possession.where(borrowed_id: copy.id).first.created_at + 1.month %> </span> 
+             <span> Till <%= estimated_return_time_of(copy) %> </span> 
             <% else %>
              <span> Available for pickup for top order. </span> 
             <% end %>
@@ -40,7 +40,7 @@
                   <%= f.submit "Order", class: "btn btn-primary unOrder" %>
                 <% end %>
               <% end %>  
-              <% if current_user.borrow?(copy) %>
+              <% if current_user.borrow?(copy) && can_unorder?(current_user, copy) %>
                 <%= form_for(current_user.borrower_relationships.find_by(borrowed_id: copy.id, borrower_id: current_user.id),
                     html: { method: :delete }) do |f| %>
                   <%= f.submit "Unorder", class: "btn unOrder" %>

@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+One:
   book_id: 1
   year_of_print: 2015-01-02
   edition: 1
   ISBN: "temp"
   id: 1
 
+two:
+  book_id: 1
+  year_of_print: 2015-01-02
+  edition: 1
+  ISBN: "temp"
+  id: 2

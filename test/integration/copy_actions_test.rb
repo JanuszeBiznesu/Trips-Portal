@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class CopyActionsTestTest < ActionDispatch::IntegrationTest
+class CopyActionsTest < ActionDispatch::IntegrationTest
 
   test "copies will display correctly, admin will be able to edit and erase copies, user won't" do
     
-    @copy = copies(:one)
+    @copy = copies(:One)
     @admin = users(:michael)
     @book = books(:Drach)
 

@@ -4,7 +4,7 @@ class CopiesControllerTest < ActionController::TestCase
 
   def setup
   	@user = users(:michael)
-  	@copy = copies(:one)
+  	@copy = copies(:One)
   end 
 
   test "create should require logged-in user" do
