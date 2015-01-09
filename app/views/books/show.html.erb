@@ -1,7 +1,15 @@
 <% provide(:title, @book.title) %>
 
 <div class="show_book">
-<table class="show_book_table">
+<% if logged_in? && current_user.admin? %>
+  <%= link_to edit_book_path(@book) do %>
+    <input type="button" value="Edit" class="btn btn-primary"/>
+  <% end %>
+  <%= link_to book_path(@book), :method => :delete do %>
+    <input type="button" value="Delete" class="btn btn-primary"/>
+  <% end %>
+<% end %>
+<table class="show_book_table center">
     <tr>
       <td> Cover: </td>
       <td>
@@ -17,24 +25,13 @@
     </tr>
 
 </table>
-<% if logged_in? && current_user.admin? %>
-  <%= link_to edit_book_path(@book) do %>
-    <input type="button" value="Edit" class="btn btn-primary"/>
-  <% end %>
-  <%= link_to book_path(@book), :method => :delete do %>
-    <input type="button" value="Delete" class="btn btn-primary"/>
-  <% end %>
-<% end %>
 <h1> <strong> Synopsis: </strong> </h1>
 <div class="synopsis_text">
   <%= @book.synopsis %> 
 </div>
 
 <h1> <strong> Copies: </strong> </h1>
-<%= link_to new_copy_path(id: @book.id) do %>
-  <input type="button"  value="New" class="btn btn-primary"/>
-<% end %>
-<table class="center">
+<table class="center copies">
 <tr>
 <th class="data"> ISBN </th>
 <th class="data"> Edition </th>
@@ -45,6 +42,13 @@
   <% @copies.each do |copy| %>
     <%= render copy %>
   <% end %>
+<tr> 
+	<td> 
+		<%= link_to new_copy_path(id: @book.id) do %>
+ 			<input type="button"  value="New" class="btn btn-primary"/>
+		<% end %>
+	</td>
+</tr>
 </table>
 <div style="{margin-left:auto; margin-right:auto;}">
 </div>
