@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  	before_action :admin_user,     only: [:new, :update, :edit]
+  	before_action :admin_user,     only: [:new, :update, :edit, :create, :destroy]
 
  	def new
  		@book = Book.new
@@ -29,6 +29,11 @@ class BooksController < ApplicationController
 		else
 	  		render 'edit'
 		end
+	end
+
+	def destroy
+		Book.find(params[:id]).destroy
+		redirect_to books_path
 	end
 
 	def index

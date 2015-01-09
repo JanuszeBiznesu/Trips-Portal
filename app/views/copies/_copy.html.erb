@@ -4,7 +4,7 @@
           <td class="data"> <%= copy.year_of_print %></td> 
           <td class="data"> <%= how_many_orders_of(copy) %> 
 
-          <% if current_user.borrow?(copy) %>
+          <% if logged_in? && current_user.borrow?(copy) %>
             <span> You are <%= position_in_line_of(current_user, copy) %> in line </span> </td> 
           <% end %>
           <td class="data">
@@ -23,27 +23,27 @@
             <% if logged_in? %>
               <% if current_user.admin? %>
                 <%= link_to edit_copy_path(copy) do %>
-                  <input type="button" value="Edit" class="btn btn-primary"/>
+                  <input type="button" value="Edit" class="btn btn-primary marginally_left"/>
                 <% end %>
                 <%= link_to copy_path(copy), :method => :delete do %>
-                  <input type="button" value="Delete" class="btn btn-primary"/>
+                  <input type="button" value="Delete" class="btn btn-primary marginally_left"/>
                 <% end %>
                 <% if how_many_orders_of(copy) > 0 %>
                   <%= link_to edit_possession_path(Possession.where(borrowed_id: copy.id).first), :method => :get do %>
-                    <input type="button" value=<%= top_action(copy) %> class="btn btn-primary"/>
+                    <input type="button" value=<%= top_action(copy) %> class="btn btn-primary unBorrow"/>
                   <% end %>
                 <% end %>
               <% end %>
               <% if not current_user.borrow?(copy) %>
                 <%= form_for(current_user.borrower_relationships.build) do |f| %>
                     <div><%= hidden_field_tag :borrowed_id, copy.id %></div>
-                  <%= f.submit "Order", class: "btn btn-primary", style: "width:60px;"  %>
+                  <%= f.submit "Order", class: "btn btn-primary unOrder" %>
                 <% end %>
               <% end %>  
               <% if current_user.borrow?(copy) %>
                 <%= form_for(current_user.borrower_relationships.find_by(borrowed_id: copy.id, borrower_id: current_user.id),
                     html: { method: :delete }) do |f| %>
-                  <%= f.submit "Unorder", class: "btn", style: "width:60px;" %>
+                  <%= f.submit "Unorder", class: "btn unOrder" %>
                 <% end %>
               <% end %>
             <% end %>

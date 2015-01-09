@@ -17,8 +17,13 @@
     </tr>
 
 </table>
-<%= link_to edit_book_path(@book) do %>
-  <input type="button" value="Edit" class="btn btn-primary"/>
+<% if logged_in? && current_user.admin? %>
+  <%= link_to edit_book_path(@book) do %>
+    <input type="button" value="Edit" class="btn btn-primary"/>
+  <% end %>
+  <%= link_to book_path(@book), :method => :delete do %>
+    <input type="button" value="Delete" class="btn btn-primary"/>
+  <% end %>
 <% end %>
 <h1> <strong> Synopsis: </strong> </h1>
 <div class="synopsis_text">

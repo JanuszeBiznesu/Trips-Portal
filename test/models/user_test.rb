@@ -59,4 +59,11 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "User should be able to place and redact order for a copy of a book" do
+    user = users(:michael)
+    copy = copies(:one)
+    user.place_order(copy)
+    user.borrowed_copies.first.copy_id == copy.id
+  end
+
 end

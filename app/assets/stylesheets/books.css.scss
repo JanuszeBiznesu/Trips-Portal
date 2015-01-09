@@ -72,8 +72,12 @@ table.center {
 	border: solid 2px;
 }
 
-.marginally {
+.marginally_top {
 	margin-top: 20px;
+}
+
+.marginally_left {
+	margin-left: 0px;
 }
 
 div.pagination {
@@ -87,6 +91,12 @@ div.pagination {
 	width: 50%;
 }
 
+.new_action {
+	border: 0px;
+	float: left;
+	width: 10%;
+}
+
 .new_possession {
 	display: inline;
 	float: left;
@@ -98,4 +108,28 @@ div.pagination {
 	float: left;
 	margin-right:10px;
 	font: 2px;
+}
+
+.unOrder {
+	 width: 60px !important;
+}
+
+.unBorrow {
+	-webkit-transition-property: background-color;
+	-webkit-transition-duration: 0.25s, 0.25s;
+	-webkit-transition-timing-function: linear, ease-in;
+	-o-transition-property: background-color;
+	-o-transition-duration: 0.25s, 0.25s;
+	-o-transition-timing-function: linear, ease-in;
+	-moz-transition-property: background-color;
+	-moz-transition-duration: 0.25s, 0.25s;
+	-moz-transition-timing-function: linear, ease-in;
+	transition-property: background-color;
+	width:100px !important;
+	background-color: #FF9900 !important;
+}
+
+.unBorrow:hover {
+	width:100px !important;
+	background-color: #BB2233 !important;
 }
