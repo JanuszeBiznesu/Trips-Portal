@@ -24,7 +24,6 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
-
 Genre.create!(name: "Drama")
 Genre.create!(name: "Biography")
 

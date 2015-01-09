@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 		if params[:q].nil?
 			@books = []
 		else
-			@books = Book.search(params[:q]).paginate(page: params[:page], :per_page => 15)
+			@books = Book.search(params).paginate(page: params[:page], :per_page => 15)
 		end
 	end
 	
