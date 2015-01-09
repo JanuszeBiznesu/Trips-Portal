@@ -1,5 +1,7 @@
 one:
   name: Drama
+  id: 1
 
 two:
   name: History
+  id: 2
