@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20150109170654) do
 
   create_table "users", force: true do |t|
     t.string   "name"
+    t.string   "surname"
+    t.string   "pesel"
     t.string   "email"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false

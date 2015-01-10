@@ -1,31 +1,41 @@
 michael:
-  name: Michael Example
+  name: Michael
+  surname: Example
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
   admin: true
+  pesel: "93032213997"
   activated: true
 
 archer:
-  name: Sterling Archer
+  name: Sterling
+  surname: Archer
   email: duchess@example.gov
+  pesel: "93032213997"
   password_digest: <%= User.digest('password') %>
   activated: true
 
 lana:
-  name: Lana Kane
+  name: Lana
+  surname: Kane
   email: hands@example.gov
+  pesel: "93032213997"
   password_digest: <%= User.digest('password') %>
   activated: true
 
 mallory:
-  name: Mallory Archer
+  name: Mallory
+  surname: Archer
   email: boss@example.gov
+  pesel: "93032213997"
   password_digest: <%= User.digest('password') %>
   activated: true
 
 <% 30.times do |n| %>
 user_<%= n %>:
   name:  <%= "User #{n}" %>
+  surname:  <%= "Surname #{n}" %>
+  pesel: "93032213997"
   email: <%= "user-#{n}@example.com" %>
   password_digest: <%= User.digest('password') %>
   activated: true
