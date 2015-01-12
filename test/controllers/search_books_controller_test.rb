@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SearchControllerTest < ActionController::TestCase
+class SearchBooksControllerTest < ActionController::TestCase
 
   test "should get contact" do
     get :search

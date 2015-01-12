@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class SearchBooksController < ApplicationController
 
 	def search
 		if params[:q].nil?

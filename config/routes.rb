@@ -3,8 +3,6 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
-  root                'static_pages#home'
-  get    'help'    => 'static_pages#help'
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
@@ -18,6 +16,8 @@ Rails.application.routes.draw do
   resources :possessions,         only: [:create, :destroy, :edit]
   resources :books
   resources :copies
-  get 'search', to: 'search#search'
+  get 'search_books', to: 'search_books#search'
+  get 'search_users', to: 'search_users#search'
+  root                'static_pages#home'
 
 end

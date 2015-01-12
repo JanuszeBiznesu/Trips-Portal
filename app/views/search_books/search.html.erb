@@ -1,6 +1,6 @@
 <h1>Book Search</h1>
  
-<%= form_for search_path, method: :get do |f| %>
+<%= form_for search_books_path, method: :get do |f| %>
   <p>
     <%= f.label "Search for" %>
     <%= text_field_tag :q, params[:q] %>
@@ -9,7 +9,6 @@
   </p>
 <% end %>
 <% if @books != [] %>
-  <%= will_paginate  @books %>
 
   <div class="books">
     <% @books.each do |book| %>

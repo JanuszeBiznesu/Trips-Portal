@@ -1,0 +1,20 @@
+<h1>User Search</h1>
+ 
+<%= form_for search_users_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+<% if @books != [] %>
+
+  <div class="users">
+    <% @books.each do |book| %>
+      <%= render :partial => 'users/user', :locals => {:user => user._source} %>
+    <% end %>
+  <%= will_paginate  @books %>
+
+<% end %>
+
+

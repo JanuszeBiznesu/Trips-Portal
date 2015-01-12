@@ -46,13 +46,15 @@
   <% @copies.each do |copy| %>
     <%= render copy %>
   <% end %>
-<tr> 
-	<td> 
-		<%= link_to new_copy_path(id: @book.id) do %>
- 			<input type="button"  value="New" class="btn btn-primary"/>
-		<% end %>
-	</td>
-</tr>
+<% if logged_in? && current_user.admin? %>
+  <tr> 
+  	<td> 
+  		<%= link_to new_copy_path(id: @book.id) do %>
+   			<input type="button"  value="New" class="btn btn-primary"/>
+  		<% end %>
+  	</td>
+  </tr>
+<% end %>
 </table>
 <div style="{margin-left:auto; margin-right:auto;}">
 </div>
