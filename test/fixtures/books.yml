@@ -1,8 +1,8 @@
 
 Drach:
   title: Drach
-  author: "Szczepan Twardoch"
-  synopsis: "Tako rzecze Drach"
+  user_id: 1
+  text: "Tako rzecze Drach"
   id: 1
-  genre_id: 1
+  grade: 3
 

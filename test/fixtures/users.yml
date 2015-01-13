@@ -6,6 +6,7 @@ michael:
   admin: true
   pesel: "93032213997"
   activated: true
+  id: 1
 
 archer:
   name: Sterling

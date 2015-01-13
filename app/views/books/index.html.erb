@@ -1,7 +1,7 @@
 <% provide(:title, 'All books') %>
 <h1>All books</h1>
 <div class="list">
-<% if logged_in? && current_user.admin? %>
+<% if logged_in?  %>
 	<%= link_to new_book_path do %>
 	  <input type="button" value="New" class="btn btn-primary new_action"/>
 	<% end %>

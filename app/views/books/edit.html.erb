@@ -9,11 +9,14 @@
       <%= f.label :title %>
       <%= f.text_field :title, class: 'form-control' %>
 
-      <%= f.label :author %>
-      <%= f.text_field :author, class: 'form-control' %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
 
-      <%= f.label :synopsis %>
-      <%= f.text_area :synopsis, class: 'form-control' %>
+      <%= f.select "genre_id", options_from_collection_for_select(get_genres, "id", "name") %>
+
+      <%= f.number_field :grade, class: 'form-control' %>s
+
+      <%= f.label :text %>
+      <%= f.text_area :text, class: 'form-control' %>
 
       <%= f.label :picture %>
       <span class="picture">
