@@ -20,6 +20,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem "tabs_on_rails"
 gem "tire"
+gem 'isbn_validation'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

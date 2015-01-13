@@ -2,14 +2,14 @@
 
 One:
   book_id: 1
-  year_of_print: 2015-01-02
+  year_of_print: 2015
   edition: 1
-  ISBN: "temp"
+  ISBN: "0-19-852663-6"
   id: 1
 
 two:
   book_id: 1
-  year_of_print: 2015-01-02
+  year_of_print: 2015
   edition: 1
-  ISBN: "temp"
+  ISBN: "978-0-123456-47-2"
   id: 2
