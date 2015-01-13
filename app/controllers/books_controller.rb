@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  	before_action :admin_user,     only: [:new, :update, :edit, :create, :destroy]
+  	before_action :logged_in_user,     only: [:new, :update, :edit, :create, :destroy]
 
  	def new
  		@book = Book.new

@@ -29,14 +29,8 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test "synopsis should be present" do
-    @book.synopsis = "     "
+    @book.text = "     "
     assert_not @book.valid?
-  end
-
-  test "Book can be searched with correct data" do
-    assert Book.search("Drach", load: true).first.title == "Drach"
-    assert Book.search("Drach", load: true).first.title == "Drach"
-    assert Book.search("Drach", load: true).first == nil
   end
 
 end

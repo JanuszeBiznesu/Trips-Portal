@@ -1,7 +1,7 @@
 class CopiesController < ApplicationController
 
 
-	before_action :admin_user
+  	before_action :logged_in_user,     only: [:new, :update, :edit, :create, :destroy]
 	
 	def edit
     	@copy = Copy.find(params[:id])

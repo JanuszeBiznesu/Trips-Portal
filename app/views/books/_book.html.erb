@@ -6,7 +6,7 @@
       <section class="synopsis">
         <span class="content">
           <p> <strong> Title: </strong> <%= book.title %> </p>
-          <p> <strong> Author: </strong> <%= book.author %></p> 
+          <p> <strong> Author: </strong> <%= User.find(book.user_id).name %> <%= User.find(book.user_id).surname  %> </p> 
       </section>
       </aside>
   </div>

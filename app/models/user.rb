@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   before_save   :downcase_email
   validates :name,  presence: true, length: { maximum: 50 }
 
+  has_many :copy, dependent: :destroy
+
   validates :surname,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PESEL_REGEX = /\d{9}/i
@@ -16,10 +18,6 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-  has_many :borrower_relationships, class_name:  "Possession",
-                                    foreign_key: "borrower_id",
-                                    dependent:   :destroy
-  has_many :borrowed_copies, through: :borrower_relationships, source: :borrowed
 
   def place_order(copy)
     borrower_relationships.create(borrowed_id: copy.id)

@@ -20,28 +20,30 @@ User.create!(name:  "Example",
 end
 
 
-Genre.create!(name: "Drama")
-Genre.create!(name: "Biography")
+Genre.create!(name: "Polska")
+Genre.create!(name: "Afryka")
 
 users = User.all
 user  = users.first
 
 Book.create!(title: "Drach",
-            synopsis: "Tako rzecze Drach",
-            amount: 1,
+            text: "Cool trip, I reccomend",
             genre_id: 1,
-            author: "Szczepan Twardoch")
+            user_id: 1,
+            grade: 3
+            )
 
 
 99.times do |n|
   author  = Faker::Name.name
-  title = "Leonard part #{n+1}"
+  title = "Trip part #{n+1}"
   Book.create!(title: title,
-              synopsis: "Yet another part of Leonard adventures",
-              amount: 1,
-              genre_id: 2,
-              author: author)
+            text: "Cool trip, I reccomend",
+            genre_id: 1,
+            user_id: 1,
+            grade: 3
+            )
 end
 
-Copy.create!(book_id: 1, edition: 1, ISBN: "temp", year_of_print: Time.zone.now.year)
-Copy.create!(book_id: 1, edition: 1, ISBN: "temp", year_of_print: Time.zone.now.year)
+Copy.create!(book_id: 1, user_id: 1, text: "Fajne fajne", grade: 5)
+Copy.create!(book_id: 2, user_id: 1, text: "Fajne niezbyt", grade: 1)

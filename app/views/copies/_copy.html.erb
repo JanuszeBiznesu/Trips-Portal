@@ -1,24 +1,7 @@
 <tr>
-          <td class="data"> <%= copy.ISBN %> </td>
-          <td class="data"> <%= copy.edition %></td> 
-          <td class="data"> <%= copy.year_of_print %></td> 
-          <td class="data"> <%= how_many_orders_of(copy) %> 
-
-          <% if logged_in? && current_user.borrow?(copy) %>
-            <span> You are <%= position_in_line_of(current_user, copy) %> in line </span> </td> 
-          <% end %>
-          <td class="data">
-          <% if Possession.where(borrowed_id: copy.id).length != 0 %>
-            <% if Possession.where(borrowed_id: copy.id).first.specifier == "active" %>
-             <span> Till <%= estimated_return_time_of(copy) %> </span> 
-            <% else %>
-             <span> Available for pickup for top order. </span> 
-            <% end %>
-          <% else %>
-            <span> Available to order and pickup. </span> 
-          <% end %>
-
-          </td>
+          <td class="data"> <%= copy.text %> </td>
+          <td class="data"> <%= copy.grade %></td> 
+          <td class="data"> <%= User.find(copy.user.id).name %> <%= User.find(copy.user.id).surname %></td> 
           <td class="actions">
             <% if logged_in? %>
               <% if current_user.admin? %>
@@ -27,23 +10,6 @@
                 <% end %>
                 <%= link_to copy_path(copy), :method => :delete do %>
                   <input type="button" value="Delete" class="btn btn-primary marginally_left"/>
-                <% end %>
-                <% if how_many_orders_of(copy) > 0 %>
-                  <%= link_to edit_possession_path(Possession.where(borrowed_id: copy.id).first), :method => :get do %>
-                    <input type="button" value=<%= top_action(copy) %> class="btn btn-primary unBorrow"/>
-                  <% end %>
-                <% end %>
-              <% end %>
-              <% if not current_user.borrow?(copy) %>
-                <%= form_for(current_user.borrower_relationships.build) do |f| %>
-                    <div><%= hidden_field_tag :borrowed_id, copy.id %></div>
-                  <%= f.submit "Order", class: "btn btn-primary unOrder" %>
-                <% end %>
-              <% end %>  
-              <% if current_user.borrow?(copy) && can_unorder?(current_user, copy) %>
-                <%= form_for(current_user.borrower_relationships.find_by(borrowed_id: copy.id, borrower_id: current_user.id),
-                    html: { method: :delete }) do |f| %>
-                  <%= f.submit "Unorder", class: "btn unOrder" %>
                 <% end %>
               <% end %>
             <% end %>
