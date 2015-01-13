@@ -33,6 +33,9 @@ class BooksController < ApplicationController
 
 	def destroy
 		Book.find(params[:id]).destroy
+	    Book.tire.index.delete
+	    Book.tire.import
+	    Book.tire.index.refresh
 		redirect_to books_path
 	end
 

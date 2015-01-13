@@ -5,6 +5,9 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(name: "Example",surname: "User", pesel: "93032213997", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
+    User.tire.index.delete
+    User.import
+    User.tire.index.refresh
   end
 
   test "should be valid" do

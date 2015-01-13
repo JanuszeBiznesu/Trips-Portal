@@ -7,13 +7,13 @@
     <%= submit_tag "Go", name: nil %>
   </p>
 <% end %>
-<% if @books != [] %>
+<% if @users != [] %>
 
   <div class="users">
-    <% @books.each do |book| %>
-      <%= render :partial => 'users/user', :locals => {:user => user._source} %>
+    <% @users.each do |user| %>
+      <%= render :partial => 'users/user', :locals => {:user => user} %>
     <% end %>
-  <%= will_paginate  @books %>
+  <%= will_paginate  @users %>
 
 <% end %>
 

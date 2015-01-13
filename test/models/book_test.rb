@@ -3,6 +3,9 @@ require 'test_helper'
 class BookTest < ActiveSupport::TestCase
 	def setup
 		@book = books(:Drach)
+    Book.tire.index.delete
+    Book.import
+    Book.tire.index.refresh
 	end
 
 
