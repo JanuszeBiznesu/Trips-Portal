@@ -31,9 +31,9 @@ class BookTest < ActiveSupport::TestCase
   end
 
   test "Book can be searched with correct data" do
-    assert Book.search(q: "Drach", genre_id: '0').first.title == "Drach"
-    assert Book.search(q: "Drach", genre_id: '1').first.title == "Drach"
-    assert Book.search(q: "Drach", genre_id: '2').first == nil
+    assert Book.search("Drach", load: true).first.title == "Drach"
+    assert Book.search("Drach", load: true).first.title == "Drach"
+    assert Book.search("Drach", load: true).first == nil
   end
 
 end

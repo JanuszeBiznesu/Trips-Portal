@@ -37,4 +37,9 @@ class UserTest < ActiveSupport::TestCase
     user.borrowed_copies.first.id == copy.id
   end
 
+  test "User can be searched with correct data" do
+    assert User.search("Michael", load: true).first.surname == "Example"
+    assert User.search("Lana", load: true).first.surname == "Kane"
+  end
+
 end

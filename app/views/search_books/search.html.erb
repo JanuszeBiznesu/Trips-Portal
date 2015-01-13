@@ -12,7 +12,7 @@
 
   <div class="books">
     <% @books.each do |book| %>
-      <%= render :partial => 'books/book', :locals => {:book => book._source} %>
+      <%= render :partial => 'books/book', :locals => {:book => book} %>
     <% end %>
   <%= will_paginate  @books %>
 

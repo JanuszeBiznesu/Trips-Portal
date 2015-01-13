@@ -1,11 +1,10 @@
 class SearchUsersController < ApplicationController
 
 	def search
-	  if params[:q].nil?
-	    @articles = []
-	  else
-	    @articles = User.search params[:q]
-	  end
+		query = params[:q]
+		User.tire.search(load: true, page: params[:page], per_page: 15) do 
+			query { string query, default_operator: "AND" } if query.present?
+		end
 	end
 
 end
