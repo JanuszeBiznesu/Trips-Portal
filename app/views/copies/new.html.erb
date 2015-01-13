@@ -7,17 +7,14 @@
       <%= render 'shared/error_messages', object: f.object %>
 
 
-      <%= f.label :ISBN %>
-      <%= f.text_field :ISBN, class: 'form-control' %>
+      <%= f.label :text %>
+      <%= f.text_area :text, class: 'form-control' %>
 
-      <%= f.label :edition %>
-      <%= f.number_field :edition, class: 'form-control' %>
-
-      <%= f.label :year_of_print %>
-      <%= f.select :year_of_print,  (Time.zone.now.year - 150)..(Time.zone.now.year) %>
+      <%= f.label :grade %>
+      <%= f.number_field :grade, class: 'form-control' %>
 
       <%= f.hidden_field :book_id, :value => params[:id] %>
-
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.submit "Save new copy", class: "btn btn-primary" %>
     <% end %>
 

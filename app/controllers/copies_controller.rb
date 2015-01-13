@@ -49,7 +49,7 @@ class CopiesController < ApplicationController
 	private
 
 		    def copy_params
-      			params.require(:copy).permit(:ISBN, :edition, :year_of_print, :book_id, :id)
+      			params.require(:copy).permit(:text, :user_id, :book_id, :grade)
     		end
 
 end

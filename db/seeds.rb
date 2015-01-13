@@ -16,6 +16,7 @@ User.create!(name:  "Example",
                surname: name[1],
                pesel: "93032213997",
                password:              password,
+               activated: true,
                password_confirmation: password)
 end
 
