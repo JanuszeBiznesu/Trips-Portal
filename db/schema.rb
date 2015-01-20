@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109170654) do
+ActiveRecord::Schema.define(version: 20150114172558) do
 
-  create_table "books", force: true do |t|
-    t.string   "title"
-    t.string   "difficulty"
-    t.string   "text"
-    t.integer  "grade"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "picture"
-    t.integer  "genre_id"
-  end
-
-  create_table "copies", force: true do |t|
-    t.integer  "book_id"
+  create_table "comments", force: true do |t|
+    t.integer  "trip_id"
     t.integer  "user_id"
     t.string   "text"
     t.integer  "grade"
@@ -34,23 +22,23 @@ ActiveRecord::Schema.define(version: 20150109170654) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genres", force: true do |t|
+  create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "possessions", force: true do |t|
-    t.integer  "borrower_id"
-    t.integer  "borrowed_id"
-    t.string   "specifier",   default: "pending"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+  create_table "trips", force: true do |t|
+    t.string   "title"
+    t.string   "difficulty"
+    t.string   "text"
+    t.integer  "grade"
+    t.integer  "user_id"
+    t.integer  "country_id"
+    t.string   "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "possessions", ["borrowed_id"], name: "index_possessions_on_borrowed_id"
-  add_index "possessions", ["borrower_id", "borrowed_id", "specifier"], name: "index_possessions_on_borrower_id_and_borrowed_id_and_specifier", unique: true
-  add_index "possessions", ["borrower_id"], name: "index_possessions_on_borrower_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

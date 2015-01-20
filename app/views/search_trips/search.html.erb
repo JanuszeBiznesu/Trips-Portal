@@ -1,0 +1,21 @@
+<h1>Book Search</h1>
+ 
+<%= form_for search_trips_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= select_tag "country_id", options_from_collection_for_select(get_countries, "id", "name") %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+<% if @books != [] %>
+
+  <div class="books">
+    <% @books.each do |book| %>
+      <%= render :partial => 'trips/trip', :locals => {:book => book} %>
+    <% end %>
+  <%= will_paginate  @books %>
+
+<% end %>
+
+

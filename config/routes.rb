@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :possessions,         only: [:create, :destroy, :edit]
-  resources :books
-  resources :copies
-  get 'search_books', to: 'search_books#search'
+  resources :trips
+  resources :comments
+  get 'search_trips', to: 'search_trips#search'
   get 'search_users', to: 'search_users#search'
   root                'static_pages#home'
 

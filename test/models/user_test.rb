@@ -33,13 +33,6 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "User should be able to place and redact order for a copy of a book" do
-    user = users(:michael)
-    copy = copies(:One)
-    user.place_order(copy)
-    user.borrowed_copies.first.id == copy.id
-  end
-
   test "User can be searched with correct data" do
     assert User.search("Michael", load: true).first.surname == "Example"
     assert User.search("Lana", load: true).first.surname == "Kane"

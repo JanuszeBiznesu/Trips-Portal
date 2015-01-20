@@ -3,8 +3,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Trips", books_path %></li>
-        <li><%= link_to "Search books", search_books_path %></li>
+        <li><%= link_to "Trips", trips_path %></li>
+        <li><%= link_to "Search trips", search_trips_path %></li>
         <% if logged_in? %>
           <% if current_user.admin? %>
             <li><%= link_to "Users", users_path %></li>

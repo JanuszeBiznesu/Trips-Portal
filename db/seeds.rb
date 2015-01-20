@@ -21,15 +21,21 @@ User.create!(name:  "Example",
 end
 
 
-Genre.create!(name: "Polska")
-Genre.create!(name: "Afryka")
 
 users = User.all
 user  = users.first
 
-Book.create!(title: "Drach",
+
+
+Comment.create!(trip_id: 1, user_id: 1, text: "Fajne fajne", grade: 5)
+Comment.create!(trip_id: 2, user_id: 1, text: "Fajne niezbyt", grade: 1)
+
+Country.create!(name: "Polska")
+Country.create!(name: "Afryka")
+
+Trip.create!(title: "Drach",
             text: "Cool trip, I reccomend",
-            genre_id: 1,
+            country_id: 1,
             user_id: 1,
             grade: 3
             )
@@ -38,13 +44,10 @@ Book.create!(title: "Drach",
 99.times do |n|
   author  = Faker::Name.name
   title = "Trip part #{n+1}"
-  Book.create!(title: title,
+  Trip.create!(title: title,
             text: "Cool trip, I reccomend",
-            genre_id: 1,
+            country_id: 1,
             user_id: 1,
             grade: 3
             )
 end
-
-Copy.create!(book_id: 1, user_id: 1, text: "Fajne fajne", grade: 5)
-Copy.create!(book_id: 2, user_id: 1, text: "Fajne niezbyt", grade: 1)

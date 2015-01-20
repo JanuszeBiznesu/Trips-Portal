@@ -1,0 +1,17 @@
+<tr>
+          <td class="data"> <%= comment.text %> </td>
+          <td class="data"> <%= comment.grade %></td> 
+          <td class="data"> <%= User.find(comment.user.id).name %> <%= User.find(comment.user.id).surname %></td> 
+          <td class="actions">
+            <% if logged_in? %>
+              <% if current_user.id == comment.user_id %>
+                <%= link_to edit_comment_path(comment) do %>
+                  <input type="button" value="Edit" class="btn btn-primary marginally_left"/>
+                <% end %>
+                <%= link_to comment_path(comment), :method => :delete do %>
+                  <input type="button" value="Delete" class="btn btn-primary marginally_left"/>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+</tr>

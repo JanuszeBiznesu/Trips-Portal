@@ -1,0 +1,59 @@
+<% provide(:title, @trip.title) %>
+
+<div class="show_book">
+<% if logged_in? && current_user.admin? %>
+  <%= link_to edit_trip_path(@trip) do %>
+    <input type="button" value="Edit" class="btn btn-primary"/>
+  <% end %>
+  <%= link_to trip_path(@trip), :method => :delete do %>
+    <input type="button" value="Delete" class="btn btn-primary"/>
+  <% end %>
+<% end %>
+<table class="show_book_table center">
+    <tr>
+      <td> Cover: </td>
+      <td>
+            <%= image_tag trip.picture.url if @trip.picture? %>
+            <%= image_tag "temp.jpg" if !@trip.picture? %>
+      </td>
+    </tr>
+    <tr>
+      <td  class="data"> <strong> Title: </strong> </td> <td  class="data"> <%= @trip.title %> </td>
+    </tr>
+    <tr>
+      <td  class="data">  <strong> Author: </strong> </td>  <td> <%= User.find(@trip.user_id).name %> <%= User.find(@trip.user_id).surname  %> </td>
+    </tr>
+
+    <tr> 
+		<td  class="data"> <strong> Genre: </strong> </td> <td  class="data">  <%= @trip.country.name %> </td>
+    </tr>
+
+</table>
+<h1> <strong> Synopsis: </strong> </h1>
+<div class="synopsis_text">
+  <%= @trip.text %> 
+</div>
+
+<h1> <strong> Comments: </strong> </h1>
+<table class="center copies">
+<tr>
+<th class="data"> Comment: </th>
+<th class="data"> Grade: </th>
+<th class="data"> Author: </th>
+</tr>
+  <% @copies.each do |copy| %>
+    <%= render copy %>
+  <% end %>
+<% if logged_in? %>
+  <tr> 
+  	<td> 
+  		<%= link_to new_comment_path(id: @trip.id) do %>
+   			<input type="button"  value="New" class="btn btn-primary"/>
+  		<% end %>
+  	</td>
+  </tr>
+<% end %>
+</table>
+<div style="{margin-left:auto; margin-right:auto;}">
+</div>
+</div>

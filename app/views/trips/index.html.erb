@@ -1,0 +1,18 @@
+<% provide(:title, 'All trips') %>
+<h1>All trips</h1>
+<div class="list">
+<% if logged_in?  %>
+	<%= link_to new_trip_path do %>
+	  <input type="button" value="New" class="btn btn-primary new_action"/>
+	<% end %>
+<% end %>
+<%= will_paginate %>
+
+<div class="books">
+  <% @trips.each do |trip| %>
+    <%= render trip %>
+  <% end %>
+</div>
+
+<%= will_paginate %>
+</div>
