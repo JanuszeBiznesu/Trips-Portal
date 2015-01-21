@@ -1,16 +1,15 @@
 class SearchTripsController < ApplicationController
 
-	def search
-		query = params[:q]
-		genre_id = params[:country_id]
-		@books = Trip.tire.search(load: true, page: params[:page], per_page: 15) do 
-			query do
-				filtered do	
-					query { string query, default_operator: "AND" } if query.present?
-				end
-			end
-		end
+  def search
+    @params = params
+    query = params[:q] || ""
+    genre = params[:country_id] || ""
+    @trips = Trip.tire.search(load: true, page: params[:page], per_page: 15) do 
+      query do
+        string query
+      end
+      filter :term, :country_id => genre if genre != "" && genre != "0"
+    end
+  end
 
-	end
-	
 end

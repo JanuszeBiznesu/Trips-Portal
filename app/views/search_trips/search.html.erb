@@ -8,13 +8,13 @@
     <%= submit_tag "Go", name: nil %>
   </p>
 <% end %>
-<% if @books != [] %>
+<% if @trips != [] %>
 
   <div class="books">
-    <% @books.each do |book| %>
-      <%= render :partial => 'trips/trip', :locals => {:book => book} %>
+    <% @trips.each do |trip| %>
+      <%= render :partial => 'trips/trip', :locals => {:trip => trip} %>
     <% end %>
-  <%= will_paginate  @books %>
+  <%= will_paginate  @trips %>
 
 <% end %>
 
