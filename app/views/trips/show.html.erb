@@ -9,7 +9,7 @@
     <input type="button" value="Delete" class="btn btn-primary"/>
   <% end %>
 <% end %>
-<table class="show_book_table center">
+<table class="show_book_table center" style="background-color:white;">
     <tr>
       <td> Cover: </td>
       <td>
@@ -25,17 +25,17 @@
     </tr>
 
     <tr> 
-		<td  class="data"> <strong> Genre: </strong> </td> <td  class="data">  <%= @trip.country.name %> </td>
+		<td  class="data"> <strong> Country: </strong> </td> <td  class="data">  <%= @trip.country.name %> </td>
     </tr>
 
 </table>
 <h1> <strong> Synopsis: </strong> </h1>
-<div class="synopsis_text">
+<div class="synopsis_text"  style="background-color:white;border: none; border-radius: 20px;padding-left:20px">
   <%= @trip.text %> 
 </div>
 
 <h1> <strong> Comments: </strong> </h1>
-<table class="center copies">
+<table class="center copies"  style="background-color:white; ">
 <tr>
 <th class="data"> Comment: </th>
 <th class="data"> Grade: </th>
