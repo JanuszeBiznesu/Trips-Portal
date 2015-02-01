@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :trip_attachments
+
   get 'password_resets/new'
 
   get 'password_resets/edit'

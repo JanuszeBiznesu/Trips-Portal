@@ -3,14 +3,22 @@ class TripsController < ApplicationController
 
  	def new
  		@trip = Trip.new
+   		@trip_attachment = @trip.trip_attachments.build
  	end
 
 	def create
 		@trip = Trip.new(trip_params)
-		if @trip.save
-		 	redirect_to trips_url
-		else
-		 	 render 'new'
+		respond_to do |format|
+		 if @trip.save
+		   if params[:trip_attachments]  && params[:trip_attachments]
+			   params[:trip_attachments]['avatar'].each do |a|
+			      @trip_attachment = @trip.trip_attachments.create!(:avatar => a, :trip_id => @trip.id)
+			   end
+		   end
+		   format.html { redirect_to @trip, notice: 'Post was successfully created.' }
+		 else
+		   format.html { render action: 'new' }
+		 end
 		end
 	end
 
@@ -18,6 +26,7 @@ class TripsController < ApplicationController
 		@trip = Trip.find(params[:id])
 		@user = User.find(current_user.id) if logged_in?
 		@copies = Comment.where(trip_id: params[:id]).paginate(page: params[:page], :per_page => 30)
+		@trip_attachments = @trip.trip_attachments.all
 	end
 
 	def update
@@ -44,6 +53,7 @@ class TripsController < ApplicationController
 
 	def edit
     	@trip = Trip.find(params[:id])
+		@trip_attachments = @trip.trip_attachments.all
   	end
 
    	def admin_user
@@ -59,7 +69,7 @@ class TripsController < ApplicationController
 	private
 
 		    def trip_params
-      			params.require(:trip).permit(:title, :grade, :user_id, :text, :country_id)
+      			params.require(:trip).permit(:title, :grade, :user_id, :text, :country_id, trip_attachments_attributes: [:id, :trip_id, :avatar])
     		end
 
 end

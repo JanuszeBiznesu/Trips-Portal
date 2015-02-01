@@ -1,7 +1,7 @@
 <% provide(:title, @trip.title) %>
 
 <div class="show_book">
-<% if logged_in? && current_user.admin? %>
+<% if logged_in? && (@trip.user_id == current_user.id) %>
   <%= link_to edit_trip_path(@trip) do %>
     <input type="button" value="Edit" class="btn btn-primary"/>
   <% end %>
@@ -33,7 +33,16 @@
 <div class="synopsis_text"  style="background-color:white;border: none; border-radius: 20px;padding-left:20px">
   <%= @trip.text %> 
 </div>
-
+<span class="attachment">
+<% @trip_attachments.each do |p| %>
+  <%= link_to p.avatar_url do %>
+    <%= image_tag p.avatar_url %>
+  <% end %>
+  <% if logged_in? && (@trip.user_id == current_user.id) %>
+    <%= link_to "Delete Attachment", edit_trip_attachment_path(p) %>
+  <% end %>
+<% end %>
+</span>
 <h1> <strong> Comments: </strong> </h1>
 <table class="center copies"  style="background-color:white; ">
 <tr>

@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                     format: { with: VALID_PESEL_REGEX }
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_blank: true
-
+  has_many :trips, dependent: :destroy
 
   def place_order(copy)
     borrower_relationships.create(borrowed_id: copy.id)
@@ -78,4 +78,6 @@ class User < ActiveRecord::Base
     end
 
 end
+User.index.delete
 User.import
+User.index.refresh

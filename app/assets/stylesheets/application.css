@@ -96,3 +96,7 @@ ul {
 body {
 	background-color: #B0A9A9;
 }
+
+.attachment img{
+	height: 100px;
+}
